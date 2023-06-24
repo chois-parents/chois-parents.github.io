@@ -1,0 +1,34 @@
+.vc-container {
+  border: none !important;
+  padding: 0 10px;
+  background-color: #f0f8ff00 !important;
+}
+.is-not-in-month {
+  display: none !important;
+}
+.vc-weekday {
+  border-top: 1px solid #cbd0d8 !important;
+  border-bottom: 1px solid #cbd0d8 !important;
+  padding: 19px 0 !important;
+  font-weight: 400 !important;
+  color: #000 !important;
+  margin-bottom: 0.3em !important;
+}
+.vc-arrows-container {
+  display: none !important;
+}
+.vc-header {
+  padding: 20px !important;
+}
+.vc-title {
+  font-size: 0.93rem !important;
+  font-weight: 500 !important;
+}
+.vc-day-content {
+  font-size: 0.8rem !important;
+  font-weight: 400 !important;
+}
+.vc-highlight {
+  background-color: #1a202c !important;
+  border-radius: 5px !important;
+}
