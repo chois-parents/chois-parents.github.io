@@ -1,6 +1,6 @@
 <template>
   <div class="page">
-    <h3>방명록</h3>
+    <h3>📝 방명록</h3>
     <article class="comment-input-group">
       <p class="comment-input__name">
         <input id="name" v-model="comment.title" type="text" placeholder="👤 이름" />
@@ -13,21 +13,10 @@
           placeholder="💌 축하의 메세지를 입력해주세요"
         />
       </p>
-      <button v-if="!saveLoading" class="btn" @click="addComments">Add</button>
-      <button v-else disabled class="btn" @click="addComments">Add</button>
+      <button v-if="!saveLoading" class="default-btn" @click="addComments">Add</button>
+      <button v-else disabled class="default-btn" @click="addComments">Add</button>
     </article>
-    <b-pagination
-      v-model="currentPage"
-      :total-rows="rows"
-      :per-page="perPage"
-      aria-controls="my-table"
-      first-text="«"
-      prev-text="‹"
-      next-text="›"
-      last-text="»"
-      pills
-      size="sm"
-    ></b-pagination>
+
     <div class="comment-group">
       <article class="comments" v-for="(data, idx) in currentComments" :key="idx">
         <section class="comment-title">
@@ -39,9 +28,22 @@
         </section>
       </article>
     </div>
+    <b-pagination
+      v-model="currentPage"
+      :total-rows="rows"
+      :per-page="perPage"
+      aria-controls="my-table"
+      first-text="«"
+      prev-text="‹"
+      next-text="›"
+      last-text="»"
+      size="sm"
+    />
   </div>
 </template>
 <script lang="ts">
+// @ts-nocheck
+
 import { Component, Vue } from 'vue-property-decorator';
 import axios from 'axios';
 import moment from 'moment';
@@ -74,6 +76,292 @@ export default class CommentPage extends Vue {
   }
   created() {
     this.loadComments();
+    // this.res = [
+    //   {
+    //     title: '',
+    //     body: '테스트',
+    //   },
+    //   {
+    //     title: '타이틀',
+    //     body: '테스트',
+    //   },
+    //   {
+    //     title: '타이틀',
+    //     body: '테스트',
+    //   },
+    //   {
+    //     title: '타이틀',
+    //     body: '테스트',
+    //   },
+    //   {
+    //     title: '타이틀',
+    //     body: '테스트',
+    //   },
+    //   {
+    //     title: '타이틀',
+    //     body: '테스트',
+    //   },
+    //   {
+    //     title: '타이틀',
+    //     body: '테스트',
+    //   },
+    //   {
+    //     title: '타이틀',
+    //     body: '테스트',
+    //   },
+    //   {
+    //     title: '타이틀',
+    //     body: '테스트',
+    //   },
+    //   {
+    //     title: '타이틀',
+    //     body: '테스트',
+    //   },
+    //   {
+    //     title: '타이틀',
+    //     body: '테스트',
+    //   },
+    //   {
+    //     title: '타이틀',
+    //     body: '테스트',
+    //   },
+    //   {
+    //     title: '타이틀',
+    //     body: '테스트',
+    //   },
+    //   {
+    //     title: '타이틀',
+    //     body: '테스트',
+    //   },
+    //   {
+    //     title: '타이틀',
+    //     body: '테스트',
+    //   },
+    //   {
+    //     title: '타이틀',
+    //     body: '테스트',
+    //   },
+    //   {
+    //     title: '타이틀',
+    //     body: '테스트',
+    //   },
+    //   {
+    //     title: '타이틀',
+    //     body: '테스트',
+    //   },
+    //   {
+    //     title: '타이틀',
+    //     body: '테스트',
+    //   },
+    //   {
+    //     title: '타이틀',
+    //     body: '테스트',
+    //   },
+    //   {
+    //     title: '타이틀',
+    //     body: '테스트',
+    //   },
+    //   {
+    //     title: '타이틀',
+    //     body: '테스트',
+    //   },
+    //   {
+    //     title: '타이틀',
+    //     body: '테스트',
+    //   },
+    //   {
+    //     title: '타이틀',
+    //     body: '테스트',
+    //   },
+    //   {
+    //     title: '타이틀',
+    //     body: '테스트',
+    //   },
+    //   {
+    //     title: '타이틀',
+    //     body: '테스트',
+    //   },
+    //   {
+    //     title: '타이틀',
+    //     body: '테스트',
+    //   },
+    //   {
+    //     title: '타이틀',
+    //     body: '테스트',
+    //   },
+    //   {
+    //     title: '타이틀',
+    //     body: '테스트',
+    //   },
+    //   {
+    //     title: '타이틀',
+    //     body: '테스트',
+    //   },
+    //   {
+    //     title: '타이틀',
+    //     body: '테스트',
+    //   },
+    //   {
+    //     title: '타이틀',
+    //     body: '테스트',
+    //   },
+    //   {
+    //     title: '타이틀',
+    //     body: '테스트',
+    //   },
+    //   {
+    //     title: '타이틀',
+    //     body: '테스트',
+    //   },
+    //   {
+    //     title: '타이틀',
+    //     body: '테스트',
+    //   },
+    //   {
+    //     title: '타이틀',
+    //     body: '테스트',
+    //   },
+    //   {
+    //     title: '타이틀',
+    //     body: '테스트',
+    //   },
+    //   {
+    //     title: '타이틀',
+    //     body: '테스트',
+    //   },
+    //   {
+    //     title: '타이틀',
+    //     body: '테스트',
+    //   },
+    //   {
+    //     title: '타이틀',
+    //     body: '테스트',
+    //   },
+    //   {
+    //     title: '타이틀',
+    //     body: '테스트',
+    //   },
+    //   {
+    //     title: '타이틀',
+    //     body: '테스트',
+    //   },
+    //   {
+    //     title: '타이틀',
+    //     body: '테스트',
+    //   },
+    //   {
+    //     title: '타이틀',
+    //     body: '테스트',
+    //   },
+    //   {
+    //     title: '타이틀',
+    //     body: '테스트',
+    //   },
+    //   {
+    //     title: '타이틀',
+    //     body: '테스트',
+    //   },
+    //   {
+    //     title: '타이틀',
+    //     body: '테스트',
+    //   },
+    //   {
+    //     title: '타이틀',
+    //     body: '테스트',
+    //   },
+    //   {
+    //     title: '타이틀',
+    //     body: '테스트',
+    //   },
+    //   {
+    //     title: '타이틀',
+    //     body: '테스트',
+    //   },
+    //   {
+    //     title: '타이틀',
+    //     body: '테스트',
+    //   },
+    //   {
+    //     title: '타이틀',
+    //     body: '테스트',
+    //   },
+    //   {
+    //     title: '타이틀',
+    //     body: '테스트',
+    //   },
+    //   {
+    //     title: '타이틀',
+    //     body: '테스트',
+    //   },
+    //   {
+    //     title: '타이틀',
+    //     body: '테스트',
+    //   },
+    //   {
+    //     title: '타이틀',
+    //     body: '테스트',
+    //   },
+    //   {
+    //     title: '타이틀',
+    //     body: '테스트',
+    //   },
+    //   {
+    //     title: '타이틀',
+    //     body: '테스트',
+    //   },
+    //   {
+    //     title: '타이틀',
+    //     body: '테스트',
+    //   },
+    //   {
+    //     title: '타이틀',
+    //     body: '테스트',
+    //   },
+    //   {
+    //     title: '타이틀',
+    //     body: '테스트',
+    //   },
+    //   {
+    //     title: '타이틀',
+    //     body: '테스트',
+    //   },
+    //   {
+    //     title: '타이틀',
+    //     body: '테스트',
+    //   },
+    //   {
+    //     title: '타이틀',
+    //     body: '테스트',
+    //   },
+    //   {
+    //     title: '타이틀',
+    //     body: '테스트',
+    //   },
+    //   {
+    //     title: '타이틀',
+    //     body: '테스트',
+    //   },
+    //   {
+    //     title: '타이틀',
+    //     body: '테스트',
+    //   },
+    //   {
+    //     title: '타이틀',
+    //     body: '테스트',
+    //   },
+    //   {
+    //     title: '타이틀',
+    //     body: '테스트',
+    //   },
+    //   {
+    //     title: '타이틀',
+    //     body: '테스트',
+    //   },
+    //   {
+    //     title: '타이틀',
+    //     body: '테스트',
+    //   },
+    // ];
   }
   getDate(date: string) {
     return moment(date).format('YYYY.MM.DD HH:mm');
@@ -126,7 +414,7 @@ export default class CommentPage extends Vue {
   background-color: cadetblue;
   color: white;
   font-weight: 500;
-  font-size: 0.8em;
+  font-size: 0.8rem;
 }
 .save-btn:disabled {
   background-color: #5f9ea045;
@@ -135,7 +423,7 @@ export default class CommentPage extends Vue {
 .comment-input__contents {
   text-align: start;
   margin: 5px 0;
-  font-size: 0.8em;
+  font-size: 0.8rem;
   input,
   textarea {
     border: 1px solid #e2e2e2;
@@ -151,14 +439,14 @@ export default class CommentPage extends Vue {
   display: -webkit-flex;
   display: -webkit-flexbox;
   flex-direction: column;
-  .btn {
+  .default-btn {
     width: fit-content;
     align-self: end;
   }
 }
 #contents {
-  width: 95%;
-  height: 4em;
+  width: 100%;
+  height: 50px;
   resize: none;
 }
 .divider {
@@ -190,6 +478,9 @@ export default class CommentPage extends Vue {
   h5 {
     margin: 0;
   }
+  h1 {
+    font-weight: 700;
+  }
 }
 .comment-body {
   text-align: start;
@@ -210,12 +501,16 @@ export default class CommentPage extends Vue {
 }
 .page-item.active .page-link {
   color: #fff !important;
-  background-color: #572a00 !important;
+  background-color: #545454 !important;
   border: none;
 }
 .page-link {
-  color: #572a00 !important;
+  color: #000 !important;
   border: none !important;
-  background-color: #572a001c !important;
+  background-color: #f1f2f4 !important;
+}
+.pagination-sm .page-link {
+  padding: 4px 10px !important;
+  font-size: 0.85rem !important;
 }
 </style>

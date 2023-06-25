@@ -2,9 +2,9 @@
   border: none !important;
   padding: 0 10px;
   background-color: #f0f8ff00 !important;
-}
-.is-not-in-month {
-  display: none !important;
+  [role='button'] {
+    cursor: unset !important;
+  }
 }
 .vc-weekday {
   border-top: 1px solid #cbd0d8 !important;
@@ -12,7 +12,8 @@
   padding: 19px 0 !important;
   font-weight: 400 !important;
   color: #000 !important;
-  margin-bottom: 0.3em !important;
+  margin-bottom: 10px !important;
+  font-size: 0.9rem !important;
 }
 .vc-arrows-container {
   display: none !important;
@@ -21,14 +22,24 @@
   padding: 20px !important;
 }
 .vc-title {
-  font-size: 0.93rem !important;
+  font-size: 1.1rem !important;
   font-weight: 500 !important;
 }
 .vc-day-content {
-  font-size: 0.8rem !important;
+  font-size: 0.9rem !important;
   font-weight: 400 !important;
+  &:focus {
+    background-color: transparent !important;
+  }
+  &:hover {
+    background-color: transparent !important;
+  }
+  &.is-disabled {
+    color: #1a202c !important;
+  }
 }
 .vc-highlight {
   background-color: #1a202c !important;
   border-radius: 5px !important;
+  color: white !important;
 }

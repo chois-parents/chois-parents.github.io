@@ -1,15 +1,15 @@
 <template>
   <div id="location-info" class="page">
-    <h3>오시는 길</h3>
+    <h3>📍오시는 길</h3>
     <section class="address">
-      <h4>한강 세빛섬, 플로팅 아일랜드</h4>
+      <h4 class="text-semi-bold">한강 세빛섬, 플로팅 아일랜드</h4>
       <p class="info-text">{{ address }}</p>
-      <button class="btn" @click="copyAddress">주소 복사</button>
+      <button class="default-btn" @click="copyAddress">주소 복사</button>
     </section>
     <div id="map" />
     <section class="transport-info-container">
       <div v-for="{ title, content } in transports" :key="title" class="transport">
-        <h4>{{ title }}</h4>
+        <h4 class="text-semi-bold">{{ title }}</h4>
         <p class="info-text">
           {{ content }}
         </p>
@@ -19,6 +19,8 @@
   </div>
 </template>
 <script lang="ts">
+// @ts-nocheck
+
 import { Component, Vue } from 'vue-property-decorator';
 @Component({})
 export default class LocationInfo extends Vue {
@@ -27,12 +29,13 @@ export default class LocationInfo extends Vue {
   lon = 126.99497238581128;
   transports = [
     {
-      title: '지하철',
-      content: `고속터미널역 6번 출구 앞에서 10분 간격 웨딩 홀 셔틀 운행
+      title: '🚆 지하철',
+      content: `고속터미널역 6번 출구 앞에서 
+      10분 간격으로 웨딩 홀 셔틀 운행
       (고속터미널 역 출구간 간격이 넓어요😩)`,
     },
     {
-      title: '자가용',
+      title: '🚗 자가용',
       content: `네비 - '세빛섬 플로팅아일랜드' 검색
       도착 시 하객 전용 주차장으로 안내 (하단 사진 참고)`,
     },
@@ -92,7 +95,8 @@ export default class LocationInfo extends Vue {
 
 .address {
   h4 {
-    margin: 3em 0 0.7em;
+    font-size: 1rem;
+    margin: 50px 0 10px;
   }
 }
 
@@ -109,6 +113,9 @@ export default class LocationInfo extends Vue {
   p {
     margin: 0;
     line-height: 2;
+  }
+  h4 {
+    font-size: 1rem;
   }
 }
 </style>

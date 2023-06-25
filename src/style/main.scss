@@ -1,10 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700&display=swap');
+@import url('https://webfontworld.github.io/NanumSquareNeo/NanumSquareNeo.css');
 @import '@/style/_variables.scss';
+
 body {
   margin: 0px;
 }
+
+h4 {
+  font-size: 1rem;
+}
 #app {
-  font-family: $global-font;
+  font-family: 'NanumSquareNeo', nomal;
+  font-weight: 500;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
@@ -16,22 +23,30 @@ body {
   min-width: 340px;
   margin-left: auto;
   margin-right: auto;
-  height: 5000px;
 }
 hr {
   border: 0;
   border-top: 1px solid #b3b3b3;
 }
 .page {
-  margin-top: 5em;
+  margin-top: 100px;
+
+  font-weight: 600;
+  h3 {
+    font-weight: 900;
+    margin-bottom: 50px;
+    font-size: 1.3rem;
+  }
 }
 .info-text {
   font-size: 0.9rem;
-  font-weight: 400;
   white-space: pre-line;
 }
-.btn {
-  padding: 0.7em 1em;
+.impact-text {
+  font-family: Impact;
+}
+.default-btn {
+  padding: 8px 10px;
   border: none;
   border-radius: 6px;
   color: #575757;
@@ -40,14 +55,26 @@ hr {
 }
 
 footer {
-  left: 25%;
   text-align: center;
   position: absolute;
-  bottom: 10px;
+  width: 100%;
   font-size: 0.75rem;
   font-weight: bold;
   color: #717171;
-  padding: 0.65rem;
-  z-index: 999;
+  padding: 25px 0;
   background-color: white;
+}
+.text-small {
+  font-size: 0.8rem;
+}
+.text-normal {
+  font-weight: 600 !important;
+}
+
+.text-semi-bold {
+  font-weight: 800 !important;
+}
+
+.text-bold {
+  font-weight: 900 !important;
 }

@@ -1,5 +1,5 @@
 {
-  "name": "wedding-09-2j.github.io",
+  "name": "chois-parents.github.io",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -8,7 +8,7 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
-    "axios": "^1.4.0",
+    "@types/axios": "^0.14.0",
     "core-js": "^3.6.5",
     "swiper": "^8.0.6",
     "v-calendar": "^2.4.1",
@@ -30,6 +30,8 @@
     "@vue/eslint-config-airbnb": "^5.0.2",
     "@vue/eslint-config-prettier": "^6.0.0",
     "@vue/eslint-config-typescript": "^5.0.2",
+    "axios": "^0.26.0",
+    "bootstrap-vue": "^2.23.1",
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^8.4.0",
     "eslint-plugin-import": "^2.20.2",
@@ -37,9 +39,10 @@
     "eslint-plugin-vue": "^6.2.2",
     "moment": "^2.29.4",
     "prettier": "^1.19.1",
-    "sass": "1.32.0",
-    "sass-loader": "^10.0.0",
+    "sass": "^1.32.0",
+    "sass-loader": "^10",
     "typescript": "~3.9.3",
+    "vue-pagination-2": "^3.1.0",
     "vue-template-compiler": "^2.6.11"
   },
   "eslintConfig": {

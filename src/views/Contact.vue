@@ -1,6 +1,6 @@
 <template>
   <div id="contact" class="page">
-    <h3>혼주 연락처</h3>
+    <h3>☎️ 혼주 연락처</h3>
     <section class="info-text" style="margin-bottom: 2em;">
       신랑 & 신부 혼주에게 <br />
       축하메시지를 전달해 보세요
@@ -9,17 +9,19 @@
       <section class="contact-list">
         <section v-for="(data, idx) in contactData" :key="idx" class="contact-detail">
           <div v-for="(value, idx2) in data" :key="idx2">
-            <a :href="`tel:${value.tel}`" class="contact-detail-contents">
+            <div class="contact-detail-contents">
               <span class="contact-detail__title">{{ value.title }}</span>
-              {{ value.name }} <i class="fas fa-phone-square" />
-            </a>
+              <span class="contact-detail__name">{{ value.name }}</span>
+              <a :href="`sms:${value.tel}`" class="link"><i class="fa-solid fa-comment fa-lg"/></a>
+              <a :href="`tel:${value.tel}`" class="link"><i class="fas fa-phone-square"/></a>
+            </div>
             <div v-if="idx2 === 0" class="contact-detail__title">🤍혼주🤍</div>
           </div>
         </section>
       </section>
     </article>
     <article class="page">
-      <h3>마음을 담은 축의금</h3>
+      <h3>💌 마음을 담은 축의금</h3>
       <section class="info-text">
         신랑 & 신부에게 축하의 마음을 전해주세요
       </section>
@@ -30,10 +32,10 @@
           class="account info-text"
           :style="{ 'margin-top': idx === 3 ? '2.3em' : '5px' }"
         >
-          <span>{{ label }}</span>
-          <span class="account-name">{{ name }}</span>
-          <span>{{ account }}</span>
-          <button class="btn" @click="copyAccount(account)">복사</button>
+          <span class="account-label">{{ label }}</span>
+          <span class="account-name text-semi-bold">{{ name }}</span>
+          <span class="account-number">{{ account }}</span>
+          <button class="default-btn" @click="copyAccount(account)">복사</button>
         </div>
       </section>
     </article>
@@ -123,15 +125,13 @@ export default class Contact extends Vue {
 }
 .contact-detail {
   margin: 10px;
-  .contact-detail__title {
-    margin-top: 20px;
-    margin-bottom: 8px;
-  }
   .contact-detail-contents {
     color: #000 !important;
     text-decoration: none;
     font-size: 0.8rem;
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
     margin: 5px 0;
     .fas {
@@ -149,8 +149,11 @@ export default class Contact extends Vue {
   font-weight: 800;
   font-size: 0.85rem;
 }
+.contact-detail__name {
+  margin: 0 6px;
+}
 .account-list {
-  margin: 30px 0px;
+  margin: 55px 0;
 }
 .account {
   display: flex;
@@ -164,8 +167,19 @@ export default class Contact extends Vue {
   .account-name {
     font-weight: bold;
   }
-  .btn {
-    padding: 0.5em 1em;
+  .account-number {
+    width: 215px;
   }
+  .default-btn {
+    padding: 5px 13px;
+  }
+}
+.link {
+  color: #000 !important;
+  margin: 0 4px;
+}
+.account-label,
+.account-number {
+  font-size: 0.85rem;
 }
 </style>

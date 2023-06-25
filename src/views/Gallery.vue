@@ -1,12 +1,13 @@
 <template>
-  <div class="page">
-    <h3>갤러리</h3>
+  <div id="gallery" class="page">
+    <h3>🎞️ 갤러리</h3>
+    <p class="text-small">더 많은 사진을 보려면 아래 사진을 클릭해주세요 🥰</p>
     <section class="gallery-group">
-      <section class="images">
+      <a href="https://www.icloud.com/sharedalbum/#B0rJtdOXmKM1LFN" class="images">
         <div v-for="(img, idx) in images" :key="idx" class="image-frame">
           <img :src="img" />
         </div>
-      </section>
+      </a>
     </section>
   </div>
 </template>
@@ -25,7 +26,7 @@ export default class Gallery extends Vue {
 }
 </script>
 <style lang="scss">
-$image-size: 120px;
+$image-size: 125px;
 .gallery-group {
   display: flex;
   position: relative;
@@ -53,4 +54,26 @@ $image-size: 120px;
     object-fit: cover;
   }
 }
+
+@media (min-width: 500px) and (max-width: 800px) {
+  // 800보다 크면
+  .images {
+    grid-template-columns: repeat(3, 200px);
+    grid-template-rows: repeat(3, 200px);
+  }
+}
+
+@media (min-width: 800px) {
+  // 800보다 크면
+  .images {
+    grid-template-columns: repeat(3, 250px);
+    grid-template-rows: repeat(3, 250px);
+  }
+}
+// @media (min-width: 500px) {
+//   .images {
+//     grid-template-columns: repeat(3, 250px);
+//     grid-template-rows: repeat(3, 250px);
+//   }
+// }
 </style>

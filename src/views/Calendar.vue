@@ -1,7 +1,13 @@
 <template>
   <div id="calendar">
     <section class="img-frame">
-      <v-date-picker v-model="date" disable-page-swipe :theme="themeStyles">
+      <v-date-picker
+        v-model="date"
+        trim-weeks
+        :min-date="new Date(2023, 7, 27)"
+        :max-date="new Date(2023, 7, 27)"
+        is-expanded
+      >
         <template #header-title>2023년 8월</template>
       </v-date-picker>
     </section>
@@ -16,6 +22,9 @@ export default class Callendar extends Vue {
   };
 
   date = new Date(2023, 7, 27);
+  onDayClick() {
+    // TODO
+  }
 }
 </script>
 <style lang="scss">
