@@ -15,7 +15,7 @@ export default class Callendar extends Vue {
     dayNotInMonth: 'not-in-month',
   };
 
-  date = new Date(2023, 7, 27);
+  date = new Date(2023, 8, 27);
 }
 </script>
 <style lang="scss">
