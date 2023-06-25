@@ -25,7 +25,15 @@
       <section class="info-text">
         신랑 & 신부에게 축하의 마음을 전해주세요
       </section>
-      <section class="account-list">
+      <section class="account-btn-group">
+        <button class="default-btn" @click="showAccountList('bride')">
+          신랑측 계좌번호 확인하기
+        </button>
+        <button class="default-btn" @click="showAccountList('groom')">
+          신부측 계좌번호 확인하기
+        </button>
+      </section>
+      <!-- <section class="account-list">
         <div
           v-for="({ label, name, account }, idx) in accountList"
           :key="idx"
@@ -37,14 +45,34 @@
           <span class="account-number">{{ account }}</span>
           <button class="default-btn" @click="copyAccount(account)">복사</button>
         </div>
-      </section>
+      </section> -->
     </article>
+    <b-modal v-model="modal" hide-footer :title="modalTitle" centered>
+      <section class="account-list">
+        <div
+          v-for="({ label, name, account }, idx) in showAccountData"
+          :key="idx"
+          class="account info-text"
+          :style="{ 'margin-top': idx === 3 ? '2.3em' : '5px' }"
+        >
+          <div class="account-name-group">
+            <span class="account-label">{{ label }}</span>
+            <span class="account-name text-semi-bold">{{ name }}</span>
+          </div>
+          <div class="account-number-group">
+            <span class="account-number">{{ account }}</span>
+            <button class="default-btn" @click="copyAccount(account)">복사</button>
+          </div>
+        </div>
+      </section>
+    </b-modal>
   </div>
 </template>
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 @Component({})
 export default class Contact extends Vue {
+  modal = false;
   contactData = {
     bride: [
       { title: '🤵🏻신랑', name: '최성욱', tel: '010-3476-2922' },
@@ -57,22 +85,45 @@ export default class Contact extends Vue {
       { title: '어머니', name: '이정심', tel: '010-9811-1588' },
     ],
   };
-  accountList = [
-    {
-      label: '신랑',
-      name: '최성욱',
-      account: '카카오뱅크 3333-09-9950803',
-    },
-    {
-      label: '혼주',
-      name: '최용산',
-      account: '국민은행 070-102-04-205860',
-    },
-    {
-      label: '혼주',
-      name: '강연숙',
-      account: '하나은행 407-910848-23007',
-    },
+  accountList: { [key: string]: any[] } = {
+    bride: [
+      {
+        label: '신랑',
+        name: '최성욱',
+        account: '카카오뱅크 3333-09-9950803',
+      },
+      {
+        label: '혼주',
+        name: '최용산',
+        account: '국민은행 070-102-04-205860',
+      },
+      {
+        label: '혼주',
+        name: '강연숙',
+        account: '하나은행 407-910848-23007',
+      },
+    ],
+    groom: [
+      {
+        label: '신부',
+        name: '김지은',
+        account: '우리은행 1002-454-418188',
+      },
+      {
+        label: '혼주',
+        name: '김윤석',
+        account: '부산은행 094-01-027432-9',
+      },
+      {
+        label: '혼주',
+        name: '이정심',
+        account: '부산은행 036-12-129766-1',
+      },
+    ],
+  };
+  modalTitle = '';
+
+  showAccountData = [
     {
       label: '신부',
       name: '김지은',
@@ -90,18 +141,40 @@ export default class Contact extends Vue {
     },
   ];
 
-  copyAccount(account: string) {
-    const temp = document.createElement('textarea');
-    temp.value = account;
-    document.body.appendChild(temp);
-    temp.select();
-    document.execCommand('copy');
-    document.body.removeChild(temp);
+  showAccountList(label: string) {
+    this.modalTitle =
+      label === 'groom' ? ' 👰🏻‍♀️ 신부측 계좌번호 확인하기' : ' 🤵🏻 신랑측 계좌번호 확인하기';
+    this.showAccountData = this.accountList[label];
+    this.modal = true;
+  }
+
+  async copyAccount(account: string) {
+    await navigator.clipboard.writeText(account);
     alert('복사 되었습니다');
   }
 }
 </script>
 <style lang="scss">
+#contact {
+  h3 {
+    margin-bottom: 20px;
+  }
+}
+.account-btn-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px;
+  .default-btn {
+    width: 300px;
+    margin: 5px 20px;
+    font-weight: 800;
+    padding: 15px 25px;
+    font-size: 0.9rem;
+    color: #000;
+    border-radius: 15px;
+  }
+}
 .contact-info {
   position: relative;
   background-size: cover;
@@ -153,19 +226,23 @@ export default class Contact extends Vue {
   margin: 0 6px;
 }
 .account-list {
-  margin: 55px 0;
+  width: fit-content;
+  text-align: center;
+  margin: 0 auto;
 }
 .account {
   display: flex;
   justify-content: center;
   align-items: center;
   margin: 5px 0;
-
+  flex-direction: column;
+  align-items: baseline;
   span {
     margin: 0 5px;
   }
   .account-name {
     font-weight: bold;
+    font-size: 1rem;
   }
   .account-number {
     width: 215px;
@@ -180,6 +257,14 @@ export default class Contact extends Vue {
 }
 .account-label,
 .account-number {
-  font-size: 0.85rem;
+  font-size: 0.95rem;
+}
+.account-number-group {
+  display: flex;
+  text-align: justify;
+  align-items: center;
+}
+.modal-title {
+  font-size: 1.1rem;
 }
 </style>

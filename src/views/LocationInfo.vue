@@ -40,13 +40,8 @@ export default class LocationInfo extends Vue {
       도착 시 하객 전용 주차장으로 안내 (하단 사진 참고)`,
     },
   ];
-  copyAddress() {
-    const temp = document.createElement('textarea');
-    temp.value = this.address;
-    document.body.appendChild(temp);
-    temp.select();
-    document.execCommand('copy');
-    document.body.removeChild(temp);
+  async copyAddress() {
+    await navigator.clipboard.writeText(this.address);
     alert('복사 되었습니다');
   }
 
