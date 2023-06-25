@@ -5,8 +5,8 @@
     </section>
     <hr />
     <section class="intro__sub-content">
-      <p>최용산 ・ 강연숙의 아들 <b>최성욱</b></p>
-      <p>김윤석 ・ 이정심의 딸 <b>김지은</b></p>
+      <p>최용산 ・ 강연숙의 막내 아들 <b>최성욱</b></p>
+      <p>김윤석 ・ 이정심의 첫째 딸 <b>김지은</b></p>
     </section>
   </div>
 </template>
